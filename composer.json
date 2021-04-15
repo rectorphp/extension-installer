@@ -1,0 +1,41 @@
+{
+    "name": "rector/rector-installer",
+    "type": "composer-plugin",
+    "require": {
+        "php": "^7.1 || ^8.0",
+        "composer-plugin-api": "^1.1 || ^2.0"
+    },
+    "require-dev": {
+        "composer/composer": "^2.0",
+        "phpunit/phpunit": "^7.5",
+        "symplify/easy-coding-standard": "^6.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "class": "Rector\\RectorInstaller\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rector\\RectorInstaller\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rector\\RectorInstaller\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "check-cs": [
+            "ecs check src tests --fix --dry-run --verbose"
+        ],
+        "fix-cs": [
+            "ecs check src tests --fix --verbose"
+        ],
+        "phpunit": [
+            "phpunit"
+        ]
+    },
+    "description": "Composer plugin for automatic installation of rector extensions"
+}
