@@ -7,7 +7,7 @@
     },
     "require-dev": {
         "composer/composer": "^2.0",
-        "phpunit/phpunit": "^7.5",
+        "phpunit/phpunit": "^7.5 || ^8.0",
         "symplify/easy-coding-standard": "^6.0"
     },
     "config": {
