@@ -48,8 +48,8 @@ jobs:
       - name: Info
         run: composer info
 
-      - name: CGL
-        run: composer check-cs
+      #- name: CGL
+      #  run: composer check-cs
 
       - name: Unit Tests
         run: composer phpunit
