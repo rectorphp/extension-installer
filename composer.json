@@ -1,6 +1,7 @@
 {
     "name": "rector/rector-installer",
     "type": "composer-plugin",
+    "license": "MIT",
     "require": {
         "php": "^7.1 || ^8.0",
         "composer-plugin-api": "^1.1 || ^2.0"
