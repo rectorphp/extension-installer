@@ -9,11 +9,9 @@ Composer plugin for automatic installation of Rector extensions.
 composer require --dev rector/rector-installer
 ```
 
-And that's it.
-
 ## Instructions for extension developers
 
-It's best (but optional) to set the extension's composer package [type](https://getcomposer.org/doc/04-schema.md#type) to `rector-extension` for this plugin to be able to recognize it and to be [discoverable on Packagist](https://packagist.org/explore/?type=rector-extension).
+It's best to set the extension's composer package [type](https://getcomposer.org/doc/04-schema.md#type) to `rector-extension` for this plugin to be able to recognize it and to be [discoverable on Packagist](https://packagist.org/explore/?type=rector-extension).
 
 Add `rector` key in the extension `composer.json`'s `extra` section:
 

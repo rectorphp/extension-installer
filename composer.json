@@ -28,7 +28,7 @@
     },
     "scripts": {
         "check-cs": [
-            "ecs check src tests --fix --dry-run --verbose"
+            "ecs check src tests --verbose"
         ],
         "fix-cs": [
             "ecs check src tests --fix --verbose"
