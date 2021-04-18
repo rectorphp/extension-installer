@@ -118,7 +118,7 @@ PHP;
 
         $generatedConfigFileContents = sprintf(self::$generatedFileTemplate, var_export($data, true), true);
 
-        if ($this->filesystem->hashEquals($oldGeneratedConfigFileHash, $generatedConfigFileContents)) {
+        if ($this->filesystem->hashEquals((string)$oldGeneratedConfigFileHash, $generatedConfigFileContents)) {
             return;
         }
 
