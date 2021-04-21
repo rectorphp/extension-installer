@@ -3,13 +3,14 @@
     "type": "composer-plugin",
     "license": "MIT",
     "require": {
-        "php": "^7.1 || ^8.0",
+        "php": "^7.3 || ^8.0",
         "composer-plugin-api": "^1.1 || ^2.0"
     },
     "require-dev": {
         "composer/composer": "^2.0",
-        "phpunit/phpunit": "^7.5 || ^8.0",
-        "symplify/easy-coding-standard": "^6.0 || ^8.0"
+        "phpspec/prophecy-phpunit": "^2.0",
+        "phpunit/phpunit": "^9.5",
+        "symplify/easy-coding-standard": "^9.2.16"
     },
     "config": {
         "sort-packages": true

@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Rector\RectorInstaller;
 
 use Composer\Composer;
@@ -47,8 +46,6 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
 
         $pluginInstaller->install();
     }
-
-
 
     /**
      * @return array<string, string>

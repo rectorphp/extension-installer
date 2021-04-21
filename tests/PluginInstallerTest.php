@@ -10,6 +10,7 @@ use Composer\Package\PackageInterface;
 use Composer\Repository\InstalledRepositoryInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Rector\RectorInstaller\Filesystem;
 use Rector\RectorInstaller\PluginInstaller;
@@ -19,6 +20,8 @@ use Rector\RectorInstaller\PluginInstaller;
  */
 final class PluginInstallerTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var string
      */
@@ -66,8 +69,11 @@ final class PluginInstallerTest extends TestCase
         $this->composerFilesystem = $this->prophesize(\Composer\Util\Filesystem::class);
 
         $this->filesystem = $this->prophesize(Filesystem::class);
-        $this->filesystem->isFile($this->configurationFile)->shouldBeCalledOnce()->willReturn(true);
-        $this->filesystem->hashFile($this->configurationFile)->willReturn(self::FILE_HASH);
+        $this->filesystem->isFile($this->configurationFile)
+            ->shouldBeCalledOnce()
+            ->willReturn(true);
+        $this->filesystem->hashFile($this->configurationFile)
+            ->willReturn(self::FILE_HASH);
 
         $this->localRepository = $this->prophesize(InstalledRepositoryInterface::class);
 
@@ -87,7 +93,8 @@ final class PluginInstallerTest extends TestCase
 
     public function testNoRectorPackagesInstalled(): void
     {
-        $this->localRepository->getPackages()->willReturn([]);
+        $this->localRepository->getPackages()
+            ->willReturn([]);
         $this->filesystem->writeFile($this->configurationFile, Argument::any())->shouldNotBeCalled();
         $this->filesystem->hashEquals(self::FILE_HASH, Argument::any())->willReturn(true);
         $this->pluginInstaller->install();
@@ -96,44 +103,54 @@ final class PluginInstallerTest extends TestCase
     public function testPackagesInstalled(): void
     {
         $rectorExtensionPackage = $this->prophesize(PackageInterface::class);
-        $rectorExtensionPackage->getType()->willReturn(PluginInstaller::RECTOR_EXTENSION_TYPE);
-        $rectorExtensionPackage->getName()->willReturn('rector/doctrine');
-        $rectorExtensionPackage->getFullPrettyVersion()->willReturn('rector/doctrine');
-        $rectorExtensionPackage->getExtra()->willReturn([
-            PluginInstaller::RECTOR_EXTRA_KEY => [
-                'includes' => ['config/config.php']
-            ]
-        ]);
+        $rectorExtensionPackage->getType()
+            ->willReturn(PluginInstaller::RECTOR_EXTENSION_TYPE);
+        $rectorExtensionPackage->getName()
+            ->willReturn('rector/doctrine');
+        $rectorExtensionPackage->getFullPrettyVersion()
+            ->willReturn('rector/doctrine');
+        $rectorExtensionPackage->getExtra()
+            ->willReturn([
+                PluginInstaller::RECTOR_EXTRA_KEY => [
+                    'includes' => ['config/config.php'],
+                ],
+            ]);
 
         $nonRectorExtensionPackage = $this->prophesize(PackageInterface::class);
 
         $nonRectorExtensionPackageWithExtra = $this->prophesize(PackageInterface::class);
-        $nonRectorExtensionPackageWithExtra->getType()->willReturn(null);
-        $nonRectorExtensionPackageWithExtra->getName()->willReturn('rector/foo');
-        $nonRectorExtensionPackageWithExtra->getFullPrettyVersion()->willReturn('rector/foo');
-        $nonRectorExtensionPackageWithExtra->getExtra()->willReturn([
-            PluginInstaller::RECTOR_EXTRA_KEY => [
-                'includes' => ['config/config.php']
-            ]
-        ]);
+        $nonRectorExtensionPackageWithExtra->getType()
+            ->willReturn(null);
+        $nonRectorExtensionPackageWithExtra->getName()
+            ->willReturn('rector/foo');
+        $nonRectorExtensionPackageWithExtra->getFullPrettyVersion()
+            ->willReturn('rector/foo');
+        $nonRectorExtensionPackageWithExtra->getExtra()
+            ->willReturn([
+                PluginInstaller::RECTOR_EXTRA_KEY => [
+                    'includes' => ['config/config.php'],
+                ],
+            ]);
 
-        $packages = [
-            $rectorExtensionPackage,
-            $nonRectorExtensionPackage,
-            $nonRectorExtensionPackageWithExtra
-        ];
+        $packages = [$rectorExtensionPackage, $nonRectorExtensionPackage, $nonRectorExtensionPackageWithExtra];
 
-        $this->io->write('<info>ssch/rector-extension-installer:</info> Extensions installed')->shouldBeCalledOnce();
-        $this->io->write(sprintf('> <info>%s:</info> installed', 'rector/doctrine'))->shouldBeCalledOnce();
-        $this->io->write(sprintf('> <info>%s:</info> installed', 'rector/foo'))->shouldBeCalledOnce();
+        $this->io->write('<info>ssch/rector-extension-installer:</info> Extensions installed')
+            ->shouldBeCalledOnce();
+        $this->io->write(sprintf('> <info>%s:</info> installed', 'rector/doctrine'))
+            ->shouldBeCalledOnce();
+        $this->io->write(sprintf('> <info>%s:</info> installed', 'rector/foo'))
+            ->shouldBeCalledOnce();
 
-        $this->installationManager->getInstallPath($rectorExtensionPackage)->shouldBeCalledOnce();
-        $this->installationManager->getInstallPath($nonRectorExtensionPackageWithExtra)->shouldBeCalledOnce();
+        $this->installationManager->getInstallPath($rectorExtensionPackage)
+            ->shouldBeCalledOnce();
+        $this->installationManager->getInstallPath($nonRectorExtensionPackageWithExtra)
+            ->shouldBeCalledOnce();
 
         $this->filesystem->hashEquals(self::FILE_HASH, Argument::any())->willReturn(false);
         $this->filesystem->writeFile($this->configurationFile, Argument::any())->shouldBeCalledOnce();
 
-        $this->localRepository->getPackages()->willReturn($packages);
+        $this->localRepository->getPackages()
+            ->willReturn($packages);
         $this->pluginInstaller->install();
     }
 }
