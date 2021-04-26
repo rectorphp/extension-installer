@@ -10,6 +10,9 @@ use Composer\Package\PackageInterface;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Util\Filesystem as ComposerFilesystem;
 
+/**
+ * @see \Rector\RectorInstaller\Tests\PluginInstallerTest
+ */
 final class PluginInstaller
 {
     /**
@@ -88,7 +91,7 @@ CODE_SAMPLE;
         $this->composerFilesystem = $composerFilesystem;
     }
 
-    public function install()
+    public function install(): void
     {
         $oldGeneratedConfigFileHash = null;
         if ($this->filesystem->isFile($this->configurationFile)) {
