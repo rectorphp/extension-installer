@@ -11,6 +11,7 @@
         "composer/composer": "^2.0",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.5",
+        "rector/rector-phpstan-rules": "^0.1.0",
         "symplify/easy-coding-standard": "^9.2.16"
     },
     "autoload": {
