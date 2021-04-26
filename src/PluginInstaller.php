@@ -91,7 +91,7 @@ CODE_SAMPLE;
         $this->composerFilesystem = $composerFilesystem;
     }
 
-    public function install()
+    public function install(): void
     {
         $oldGeneratedConfigFileHash = null;
         if ($this->filesystem->isFile($this->configurationFile)) {
