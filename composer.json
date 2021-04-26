@@ -1,6 +1,7 @@
 {
     "name": "rector/rector-installer",
     "type": "composer-plugin",
+    "description": "Composer plugin for automatic installation of rector extensions",
     "license": "MIT",
     "require": {
         "php": "^7.3 || ^8.0",
@@ -11,12 +12,6 @@
         "phpspec/prophecy-phpunit": "^2.0",
         "phpunit/phpunit": "^9.5",
         "symplify/easy-coding-standard": "^9.2.16"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "class": "Rector\\RectorInstaller\\Plugin"
     },
     "autoload": {
         "psr-4": {
@@ -29,15 +24,13 @@
         }
     },
     "scripts": {
-        "check-cs": [
-            "ecs check src tests --verbose"
-        ],
-        "fix-cs": [
-            "ecs check src tests --fix --verbose"
-        ],
-        "phpunit": [
-            "phpunit"
-        ]
+        "check-cs": "ecs check src tests --verbose",
+        "fix-cs": "ecs check src tests --fix --verbose"
     },
-    "description": "Composer plugin for automatic installation of rector extensions"
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "class": "Rector\\RectorInstaller\\Plugin"
+    }
 }
