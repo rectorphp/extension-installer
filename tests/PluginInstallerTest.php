@@ -134,7 +134,7 @@ final class PluginInstallerTest extends TestCase
 
         $packages = [$rectorExtensionPackage, $nonRectorExtensionPackage, $nonRectorExtensionPackageWithExtra];
 
-        $this->io->write('<info>ssch/rector-extension-installer:</info> Extensions installed')
+        $this->io->write('<info>rector/rector-installer:</info> Extensions installed')
             ->shouldBeCalledOnce();
         $this->io->write(sprintf('> <info>%s:</info> installed', 'rector/doctrine'))
             ->shouldBeCalledOnce();

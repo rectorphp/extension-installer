@@ -131,7 +131,7 @@ CODE_SAMPLE;
         }
 
         $this->filesystem->writeFile($this->configurationFile, $generatedConfigFileContents);
-        $this->io->write('<info>ssch/rector-extension-installer:</info> Extensions installed');
+        $this->io->write('<info>rector/rector-installer:</info> Extensions installed');
 
         foreach (array_keys($installedPackages) as $name) {
             $this->io->write(sprintf('> <info>%s:</info> installed', $name));
