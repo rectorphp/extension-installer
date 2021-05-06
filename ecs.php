@@ -9,29 +9,34 @@ use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import(SetList::PSR_12);
+    $containerConfigurator->import(SetList::SYMPLIFY);
+    $containerConfigurator->import(SetList::COMMON);
+    $containerConfigurator->import( SetList::CLEAN_CODE);
+
     $services = $containerConfigurator->services();
 
     $services->set(GeneralPhpdocAnnotationRemoveFixer::class)
-             ->call('configure', [
-                 [
-                     'annotations' => [
-                         'throws',
-                         'author',
-                         'package',
-                         'group',
-                         'required',
-                         'phpstan-ignore-line',
-                         'phpstan-ignore-next-line',
-                     ],
+         ->call('configure', [
+             [
+                 'annotations' => [
+                     'throws',
+                     'author',
+                     'package',
+                     'group',
+                     'required',
+                     'phpstan-ignore-line',
+                     'phpstan-ignore-next-line',
                  ],
-             ]);
+             ],
+         ]);
 
     $services->set(NoSuperfluousPhpdocTagsFixer::class)
-             ->call('configure', [
-                 [
-                     'allow_mixed' => true,
-                 ],
-             ]);
+         ->call('configure', [
+             [
+                 'allow_mixed' => true,
+             ],
+         ]);
 
     $parameters = $containerConfigurator->parameters();
 
@@ -40,6 +45,4 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ]);
-
-    $parameters->set(Option::SETS, [SetList::PSR_12, SetList::SYMPLIFY, SetList::COMMON, SetList::CLEAN_CODE]);
 };
