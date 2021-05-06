@@ -9,7 +9,7 @@ env:
 
 jobs:
     rector_install:
-        name: PHP ${{ matrix.php-versions }} with Composer ${{ matrix.composer-versions }}
+        name: PHP ${{ matrix.php-versions }}
         runs-on: ubuntu-latest
 
         strategy:
@@ -18,9 +18,7 @@ jobs:
                     - "7.3"
                     - "7.4"
                     - "8.0"
-                composer-versions:
-                    - "v1"
-                    - "v2"
+
         steps:
             -
                 uses: actions/checkout@v2
@@ -29,7 +27,6 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php-versions }}
-                    tools: composer:${{ matrix.composer-versions }}
 
             -
                 run: composer install --no-interaction --no-progress
