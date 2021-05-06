@@ -3,6 +3,10 @@ name: Rector Install
 
 on: [push, pull_request]
 
+env:
+    # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
+    COMPOSER_ROOT_VERSION: "dev-main"
+
 jobs:
     rector_install:
         name: PHP ${{ matrix.php-versions }} with Composer ${{ matrix.composer-versions }}
@@ -28,7 +32,7 @@ jobs:
                     tools: composer:${{ matrix.composer-versions }}
 
             -
-                run: composer install --no-interaction --no-progress --no-suggest
+                run: composer install --no-interaction --no-progress
                 working-directory: e2e
 
             # this must run without error and show 1 diff, or the rector/rector-nette config was not registered propperly
