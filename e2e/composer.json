@@ -1,0 +1,18 @@
+{
+    "require": {
+        "php": ">=7.3",
+        "rector/rector": "^0.10.19",
+        "rector/rector-nette": "^0.10.9",
+        "rector/extension-installer": "dev-main"
+    },
+    "require-dev": {
+        "nette/security": "^3.0"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "version": "dev-main",
+            "url": "../"
+        }
+    ]
+}
