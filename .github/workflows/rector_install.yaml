@@ -1,0 +1,37 @@
+# inspired at https://github.com/phpstan/extension-installer/blob/master/.github/workflows/integration-tests.yml
+name: Rector Install
+
+on: [push, pull_request]
+
+jobs:
+    rector_install:
+        name: PHP ${{ matrix.php-versions }} with Composer ${{ matrix.composer-versions }}
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                php-versions:
+                    - "7.3"
+                    - "7.4"
+                    - "8.0"
+                composer-versions:
+                    - "v1"
+                    - "v2"
+        steps:
+            -
+                uses: actions/checkout@v2
+
+            -
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php-versions }}
+                    tools: composer:${{ matrix.composer-versions }}
+
+            -
+                run: composer install --no-interaction --no-progress --no-suggest
+                working-directory: e2e
+
+            # this must run without error and show 1 diff, or the rector/rector-nette config was not registered propperly
+            -
+                run: vendor/bin/rector
+                working-directory: e2e
