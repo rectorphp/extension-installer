@@ -34,6 +34,13 @@
         "fix-cs": "ecs check src tests --fix --verbose --ansi",
         "phpstan": "vendor/bin/phpstan analyse --ansi --error-format symplify"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "version": "dev-main",
+            "url": "."
+        }
+    ],
     "config": {
         "sort-packages": true
     },
