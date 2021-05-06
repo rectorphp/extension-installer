@@ -11,7 +11,6 @@
         "composer/composer": "^2.0",
         "composer/xdebug-handler": "2.0 as 1.4",
         "jangregor/phpstan-prophecy": "^0.8.1",
-        "friendsofphp/php-cs-fixer": "^3.0",
         "phpspec/prophecy-phpunit": "^2.0",
         "phpstan/extension-installer": "^1.1",
         "phpunit/phpunit": "^9.5",
