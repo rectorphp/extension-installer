@@ -6,7 +6,7 @@ Composer plugin for automatic installation of Rector extensions.
 ## Usage
 
 ```bash
-composer require --dev rector/rector-installer
+composer require --dev rector/extension-installer
 ```
 
 ## Instructions for extension developers
