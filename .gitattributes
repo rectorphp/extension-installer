@@ -1,0 +1,5 @@
+ecs.php export-ignore
+e2e export-ignore
+phpstan.neon export-ignore
+README.md export-ignore
+phpunit.xml export-ignore
