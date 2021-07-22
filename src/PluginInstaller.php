@@ -25,10 +25,7 @@ final class PluginInstaller
      */
     public const RECTOR_EXTRA_KEY = 'rector';
 
-    /**
-     * @var string
-     */
-    private static $generatedFileTemplate = <<<'CODE_SAMPLE'
+    private static string $generatedFileTemplate = <<<'CODE_SAMPLE'
 <?php
 
 declare(strict_types = 1);
@@ -50,50 +47,14 @@ final class GeneratedConfig
 
 CODE_SAMPLE;
 
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
-
-    /**
-     * @var InstalledRepositoryInterface
-     */
-    private $localRepository;
-
-    /**
-     * @var IOInterface
-     */
-    private $io;
-
-    /**
-     * @var InstallationManager
-     */
-    private $installationManager;
-
-    /**
-     * @var string
-     */
-    private $configurationFile;
-
-    /**
-     * @var ComposerFilesystem
-     */
-    private $composerFilesystem;
-
     public function __construct(
-        Filesystem $filesystem,
-        InstalledRepositoryInterface $localRepository,
-        IOInterface $io,
-        InstallationManager $installationManager,
-        ComposerFilesystem $composerFilesystem,
-        string $configurationFile
+        private Filesystem $filesystem,
+        private InstalledRepositoryInterface $localRepository,
+        private IOInterface $io,
+        private InstallationManager $installationManager,
+        private ComposerFilesystem $composerFilesystem,
+        private string $configurationFile
     ) {
-        $this->filesystem = $filesystem;
-        $this->localRepository = $localRepository;
-        $this->io = $io;
-        $this->installationManager = $installationManager;
-        $this->configurationFile = $configurationFile;
-        $this->composerFilesystem = $composerFilesystem;
     }
 
     public function install(): void
