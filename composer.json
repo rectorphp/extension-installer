@@ -12,7 +12,7 @@
         "composer/composer": "^2.0",
         "composer/xdebug-handler": "2.0 as 1.4",
         "phpstan/extension-installer": "^1.1",
-        "rector/rector-phpstan-rules": "^0.1",
+        "rector/phpstan-rules": "^0.3.4",
         "symplify/easy-coding-standard": "^9.3.1",
         "symplify/phpstan-extensions": "^9.3"
     },
