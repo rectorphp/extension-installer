@@ -9,7 +9,6 @@
     },
     "require-dev": {
         "rector/rector-src": "dev-main",
-        "phpstan/phpstan": "dev-main#fc2d1db",
         "composer/composer": "^2.0",
         "composer/xdebug-handler": "2.0 as 1.4",
         "phpstan/extension-installer": "^1.1",
