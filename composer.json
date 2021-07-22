@@ -8,13 +8,14 @@
         "composer-plugin-api": "^1.1 || ^2.0"
     },
     "require-dev": {
-        "rector/rector": "^0.11.36",
+        "rector/rector-src": "dev-main",
+        "phpstan/phpstan": "dev-main#fc2d1db",
         "composer/composer": "^2.0",
         "composer/xdebug-handler": "2.0 as 1.4",
         "phpstan/extension-installer": "^1.1",
         "rector/phpstan-rules": "^0.3.4",
-        "symplify/easy-coding-standard": "^9.3.1",
-        "symplify/phpstan-extensions": "^9.3"
+        "symplify/easy-coding-standard": "^9.4.22",
+        "symplify/phpstan-extensions": "^9.4.22"
     },
     "autoload": {
         "psr-4": {
@@ -43,5 +44,7 @@
     },
     "extra": {
         "class": "Rector\\RectorInstaller\\Plugin"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
