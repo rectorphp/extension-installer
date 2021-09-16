@@ -3,8 +3,3 @@ parameters:
 
     paths:
         - src
-
-
-    ignoreErrors:
-        # autoload race-condition
-        - '#Parameter (.*?) RectorPrefix(.*?), (.*?) given#'
