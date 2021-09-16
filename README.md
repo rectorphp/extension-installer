@@ -1,3 +1,5 @@
+This package is heavily inspired by [phpstan/extension-installer](https://github.com/phpstan/extension-installer) by Ondřej Mirtes. Thank you.
+
 # Rector Extension Installer
 [![Build](https://github.com/rectorphp/rector-installer/workflows/CI/badge.svg)](https://github.com/rectorphp/rector-installer/actions)
 
