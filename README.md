@@ -30,3 +30,7 @@ Add `rector` key in the extension `composer.json`'s `extra` section:
 ## Limitations
 
 The extension installer depends on Composer script events, therefore you cannot use `--no-scripts` flag.
+
+## Acknowledgment
+This package is heavily inspired by [phpstan/extension-installer](https://github.com/phpstan/extension-installer) by Ondřej Mirtes. Thank you.
+

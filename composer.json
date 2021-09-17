@@ -42,7 +42,10 @@
         "sort-packages": true
     },
     "extra": {
-        "class": "Rector\\RectorInstaller\\Plugin"
+        "class": "Rector\\RectorInstaller\\Plugin",
+        "branch-alias": {
+            "dev-main": "0.11.x-dev"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
