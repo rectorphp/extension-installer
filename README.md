@@ -1,5 +1,6 @@
 # Rector Extension Installer
-[![Build](https://github.com/rectorphp/rector-installer/workflows/CI/badge.svg)](https://github.com/rectorphp/rector-installer/actions)
+
+[![Build](https://github.com/rectorphp/extension-installer/actions/workflows/code_analysis.yaml/badge.svg)](https://github.com/rectorphp/extension-installer/actions)
 
 Composer plugin for automatic installation of Rector extensions.
 
