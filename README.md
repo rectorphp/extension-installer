@@ -18,13 +18,13 @@ Add `rector` key in the extension `composer.json`'s `extra` section:
 
 ```json
 {
-  "extra": {
-    "rector": {
-      "includes": [
-        "config/config.php"
-      ]
+    "extra": {
+        "rector": {
+            "includes": [
+                "config/config.php"
+            ]
+        }
     }
-  }
 }
 ```
 
