@@ -4,6 +4,10 @@
 
 Composer plugin for automatic installation of Rector extensions.
 
+## Important Note
+
+As this project became a part of a core project (`rector/rector`) it shouldn't be installed in addition if you already installed `rector/rector`. See comments [here](https://github.com/rectorphp/rector/issues/7092#issuecomment-1367967936).
+
 ## Usage
 
 ```bash
