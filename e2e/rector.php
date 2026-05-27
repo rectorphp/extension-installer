@@ -2,13 +2,9 @@
 
 declare(strict_types=1);
 
-use Rector\Core\Configuration\Option;
-use Rector\Nette\Set\NetteSetList;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Rector\Config\RectorConfig;
+use RectorLaravel\Set\LaravelSetList;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(NetteSetList::NETTE_30);
-
-    $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::PATHS, [__DIR__ . '/source']);
-};
+return RectorConfig::configure()
+    ->withPaths([__DIR__ . '/source'])
+    ->withSets([LaravelSetList::LARAVEL_120]);

@@ -14,26 +14,32 @@ jobs:
     code_analysis:
         runs-on: ubuntu-latest
         strategy:
+            fail-fast: false
             matrix:
                 actions:
                     -
                         name: 'PHPStan'
                         run: composer phpstan
+
                     -
                         name: 'ECS'
                         run: composer check-cs
 
+                    -
+                        name: 'Rector'
+                        run: composer rector
+
         name: ${{ matrix.actions.name }}
 
         steps:
-            -   uses: actions/checkout@v2
+            -   uses: actions/checkout@v4
 
             -
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 8.1
+                    php-version: 8.3
                     coverage: none
 
-            -   uses: "ramsey/composer-install@v1"
+            -   uses: "ramsey/composer-install@v3"
 
             -   run: ${{ matrix.actions.run }}

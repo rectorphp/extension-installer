@@ -13,19 +13,19 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            -
-                uses: actions/checkout@v2
+            -   uses: actions/checkout@v4
 
             -
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 8.0
+                    php-version: 8.3
+                    coverage: none
 
             -
                 run: composer install --no-interaction --no-progress
                 working-directory: e2e
 
-            # this must run without error and show 1 diff, or the rector/rector-nette config was not registered propperly
+            # this must run without error — failure means the rector extension config was not registered properly
             -
-                run: vendor/bin/rector
+                run: vendor/bin/rector process --dry-run --ansi
                 working-directory: e2e

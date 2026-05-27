@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-use Nette\Security\Passwords;
-
-final class SomeNetteClass
+final class SomeClass
 {
-    public function run()
+    public function run(): void
     {
-        Passwords::hash('value');
+        $value = 'hello';
+        echo $value;
     }
 }
