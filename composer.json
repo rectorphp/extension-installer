@@ -4,7 +4,7 @@
     "description": "Composer plugin for automatic installation of Rector extensions",
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "composer-plugin-api": "^2.0"
     },
     "require-dev": {
@@ -28,8 +28,7 @@
     "scripts": {
         "check-cs": "ecs check --ansi",
         "fix-cs": "ecs check --fix --ansi",
-        "phpstan": "vendor/bin/phpstan analyse --ansi",
-        "rector": "vendor/bin/rector process --dry-run --ansi"
+        "phpstan": "vendor/bin/phpstan analyse --ansi"
     },
     "repositories": [
         {

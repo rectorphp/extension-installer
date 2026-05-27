@@ -10,9 +10,6 @@ use Composer\Package\PackageInterface;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Util\Filesystem as ComposerFilesystem;
 
-/**
- * @see \Rector\RectorInstaller\Tests\PluginInstallerTest
- */
 final class PluginInstaller
 {
     /**
@@ -73,6 +70,10 @@ CODE_SAMPLE;
             }
 
             $absoluteInstallPath = $this->installationManager->getInstallPath($package);
+            if ($absoluteInstallPath === null) {
+                continue;
+            }
+
             $data[$package->getName()] = [
                 'install_path' => $absoluteInstallPath,
                 'relative_install_path' => $this->composerFilesystem->findShortestPath(

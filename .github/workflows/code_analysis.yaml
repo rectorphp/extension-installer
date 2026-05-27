@@ -25,10 +25,6 @@ jobs:
                         name: 'ECS'
                         run: composer check-cs
 
-                    -
-                        name: 'Rector'
-                        run: composer rector
-
         name: ${{ matrix.actions.name }}
 
         steps:

@@ -32,12 +32,12 @@ final class Plugin implements PluginInterface, EventSubscriberInterface
         $installationManager = $composer->getInstallationManager();
 
         $repositoryManager = $composer->getRepositoryManager();
-        $installedRepository = $repositoryManager->getLocalRepository();
+        $localRepository = $repositoryManager->getLocalRepository();
 
         $configurationFile = __DIR__ . '/GeneratedConfig.php';
         $pluginInstaller = new PluginInstaller(
             new LocalFilesystem(),
-            $installedRepository,
+            $localRepository,
             $io,
             $installationManager,
             new \Composer\Util\Filesystem(),

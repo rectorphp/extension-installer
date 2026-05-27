@@ -38,4 +38,3 @@ The extension installer depends on Composer script events, therefore you cannot 
 
 ## Acknowledgment
 This package is heavily inspired by [phpstan/extension-installer](https://github.com/phpstan/extension-installer) by Ondřej Mirtes. Thank you.
-
