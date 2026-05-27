@@ -4,17 +4,16 @@
     "description": "Composer plugin for automatic installation of Rector extensions",
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "composer-plugin-api": "^1.1 || ^2.0"
+        "php": "^8.3",
+        "composer-plugin-api": "^2.0"
     },
     "require-dev": {
-        "rector/rector-src": "dev-main",
-        "composer/composer": "^2.0",
-        "composer/xdebug-handler": "^2.0",
-        "phpstan/extension-installer": "^1.1",
-        "rector/phpstan-rules": "^0.4",
-        "symplify/easy-coding-standard": "^10.0",
-        "symplify/phpstan-extensions": "^10.0"
+        "composer/composer": "^2.7",
+        "composer/xdebug-handler": "^3.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "rector/rector-src": "^2.4",
+        "symplify/easy-coding-standard": "^13.1"
     },
     "autoload": {
         "psr-4": {
@@ -27,9 +26,9 @@
         }
     },
     "scripts": {
-        "check-cs": "ecs check --verbose --ansi",
-        "fix-cs": "ecs check --fix --verbose --ansi",
-        "phpstan": "vendor/bin/phpstan analyse --ansi --error-format symplify"
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --fix --ansi",
+        "phpstan": "vendor/bin/phpstan analyse --ansi"
     },
     "repositories": [
         {

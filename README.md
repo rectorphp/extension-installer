@@ -6,7 +6,7 @@ Composer plugin for automatic installation of Rector extensions.
 
 ## Important Note
 
-As this project became a part of a core project (`rector/rector`) it shouldn't be installed in addition if you already installed `rector/rector`. See comments [here](https://github.com/rectorphp/rector/issues/7092#issuecomment-1367967936).
+This functionality is now part of `rector/rector` core, so you don't need to install this plugin separately if `rector/rector` is already installed. See comments [here](https://github.com/rectorphp/rector/issues/7092#issuecomment-1367967936).
 
 ## Usage
 
@@ -16,9 +16,9 @@ composer require --dev rector/extension-installer
 
 ## Instructions for extension developers
 
-It's best to set the extension's composer package [type](https://getcomposer.org/doc/04-schema.md#type) to `rector-extension` for this plugin to be able to recognize it and to be [discoverable on Packagist](https://packagist.org/explore/?type=rector-extension).
+Set the extension's Composer package [type](https://getcomposer.org/doc/04-schema.md#type) to `rector-extension` so this plugin can recognize it and so it becomes [discoverable on Packagist](https://packagist.org/explore/?type=rector-extension).
 
-Add `rector` key in the extension `composer.json`'s `extra` section:
+Add a `rector` key to the extension's `composer.json` `extra` section:
 
 ```json
 {
@@ -34,8 +34,8 @@ Add `rector` key in the extension `composer.json`'s `extra` section:
 
 ## Limitations
 
-The extension installer depends on Composer script events, therefore you cannot use `--no-scripts` flag.
+The extension installer depends on Composer script events, so you cannot use the `--no-scripts` flag.
 
 ## Acknowledgment
-This package is heavily inspired by [phpstan/extension-installer](https://github.com/phpstan/extension-installer) by Ondřej Mirtes. Thank you.
 
+This package is heavily inspired by [phpstan/extension-installer](https://github.com/phpstan/extension-installer) by Ondřej Mirtes. Thank you.

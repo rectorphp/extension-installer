@@ -10,9 +10,6 @@ use Composer\Package\PackageInterface;
 use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Util\Filesystem as ComposerFilesystem;
 
-/**
- * @see \Rector\RectorInstaller\Tests\PluginInstallerTest
- */
 final class PluginInstaller
 {
     /**
@@ -48,12 +45,12 @@ final class GeneratedConfig
 CODE_SAMPLE;
 
     public function __construct(
-        private Filesystem $filesystem,
-        private InstalledRepositoryInterface $localRepository,
-        private IOInterface $io,
-        private InstallationManager $installationManager,
-        private ComposerFilesystem $composerFilesystem,
-        private string $configurationFile
+        private readonly Filesystem $filesystem,
+        private readonly InstalledRepositoryInterface $installedRepository,
+        private readonly IOInterface $io,
+        private readonly InstallationManager $installationManager,
+        private readonly ComposerFilesystem $composerFilesystem,
+        private readonly string $configurationFile
     ) {
     }
 
@@ -67,12 +64,16 @@ CODE_SAMPLE;
         $installedPackages = [];
         $data = [];
 
-        foreach ($this->localRepository->getPackages() as $package) {
+        foreach ($this->installedRepository->getPackages() as $package) {
             if ($this->shouldSkip($package)) {
                 continue;
             }
 
             $absoluteInstallPath = $this->installationManager->getInstallPath($package);
+            if ($absoluteInstallPath === null) {
+                continue;
+            }
+
             $data[$package->getName()] = [
                 'install_path' => $absoluteInstallPath,
                 'relative_install_path' => $this->composerFilesystem->findShortestPath(
@@ -109,11 +110,6 @@ CODE_SAMPLE;
         if ($package->getType() === self::RECTOR_EXTENSION_TYPE) {
             return false;
         }
-
-        if (isset($package->getExtra()[self::RECTOR_EXTRA_KEY])) {
-            return false;
-        }
-
-        return true;
+        return ! isset($package->getExtra()[self::RECTOR_EXTRA_KEY]);
     }
 }
